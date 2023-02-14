@@ -12,5 +12,16 @@
       </jdbc-additional-properties>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="Sanctuarium: Zoo_231 by Guest" group="München" uuid="464a0b58-aa50-4406-9f60-f3808c5e3040">
+      <driver-ref>49eafe14-4836-4c54-a5c8-757697e384ed</driver-ref>
+      <configured-by-url>true</configured-by-url>
+      <auto-commit>false</auto-commit>
+      <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
+      <jdbc-url>jdbc:oracle:oci:Guest/G@Sanctuarium</jdbc-url>
+      <jdbc-additional-properties>
+        <property name="TNSADMIN_DIR" value="$USER_HOME$/Oracle/instantclient_19_8/network/admin" />
+      </jdbc-additional-properties>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
