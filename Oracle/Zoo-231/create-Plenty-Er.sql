@@ -51,8 +51,10 @@ end Plenty_Eratosthenes;
 
 create table Plenty_Prime
 (
-    Num number(6) not null primary key
+    Num number(6) not null
+        constraint Plenty_Prime_pk primary key
 )
+    storage (freelist groups 1 freelists 1)
 /
 
 
