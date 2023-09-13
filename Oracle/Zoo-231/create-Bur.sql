@@ -27,6 +27,9 @@ create table Bur_Face
 )   cluster Bur_Face_Cluster (Id)
 /
 
+comment on table Bur_Face is 'The base entity of an organisation or a person'
+/
+
 create table Bur_Org
 (
     Id number(9) not null
@@ -39,6 +42,9 @@ create table Bur_Org
     constraint Bur_Org_Name_ch
         check (Brand_Name is not null or Legal_Name is not null)
 )   cluster Bur_Face_Cluster (Id)
+/
+
+comment on table Bur_Org is 'Organization'
 /
 
 create table Bur_Person
@@ -59,6 +65,9 @@ create table Bur_Person
     constraint Bur_Person_Name_ch 
         check (F_Name is not null or L_Name is not null)
 )   cluster Bur_Face_Cluster (Id)
+/
+
+comment on table Bur_Person is 'Person'
 /
 
 create trigger Bur_Face_tbi
@@ -86,6 +95,11 @@ from Bur_Face
 where Status >= 0
 /
 
+comment on table Bur_Org_Brief is
+'Organization, all brief attributes.
+Scope: all organizations.'
+/
+
 create view Bur_Person_Brief as
 select Id,
        Display_Name,
@@ -100,5 +114,10 @@ select Id,
 from Bur_Face
      natural join Bur_Person
 where Status >= 0
+/
+
+comment on table Bur_Person_Brief is
+'Person, all brief attributes.
+Scope: all people.'
 /
 
