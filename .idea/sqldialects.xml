@@ -2,7 +2,6 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/Microsoft" dialect="TSQL" />
-    <file url="file://$PROJECT_DIR$/Microsoft/Zoo-251/create-Basic-11.sql" dialect="TSQL" />
     <file url="file://$PROJECT_DIR$/Oracle" dialect="OracleSqlPlus" />
   </component>
 </project>
