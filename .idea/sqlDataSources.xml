@@ -12,6 +12,20 @@
               <option value="file://$PROJECT_DIR$/Oracle/Zoo-231" />
             </array>
           </option>
+          <option name="group" value="Oracle" />
+          <option name="outLayout" value="File per object by schema.groovy" />
+        </State>
+        <State>
+          <option name="id" value="c9aa4649-e810-4e18-aba2-4423593408cc" />
+          <option name="name" value="MS SQL Zoo-251 Scripts" />
+          <option name="dbmsName" value="UNKNOWN" />
+          <option name="urls">
+            <array>
+              <option value="file://$PROJECT_DIR$/Microsoft/Zoo-251/create-Schema.sql" />
+              <option value="file://$PROJECT_DIR$/Microsoft/Zoo-251/create-Basic-11.sql" />
+            </array>
+          </option>
+          <option name="group" value="Microsoft" />
           <option name="outLayout" value="File per object by schema.groovy" />
         </State>
       </list>

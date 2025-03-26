@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Sanctuarium: Zoo_231" single-connection="true" group="München" uuid="cda1dddb-c843-4e66-95be-3c9b1d2352dd">
-      <driver-ref>49eafe14-4836-4c54-a5c8-757697e384ed</driver-ref>
+    <data-source source="LOCAL" name="Sanctuarium: Zoo_231" single-connection="true" group="Oracle" uuid="cda1dddb-c843-4e66-95be-3c9b1d2352dd">
+      <driver-ref>oracle.19</driver-ref>
       <auto-commit>false</auto-commit>
       <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
       <jdbc-url>jdbc:oracle:thin:@Sanctuarium</jdbc-url>
@@ -12,7 +12,7 @@
       </jdbc-additional-properties>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="Sanctuarium: Zoo_231 by Guest" group="München" uuid="464a0b58-aa50-4406-9f60-f3808c5e3040">
+    <data-source source="LOCAL" name="Sanctuarium: Zoo_231 by Guest" group="Oracle" uuid="464a0b58-aa50-4406-9f60-f3808c5e3040">
       <driver-ref>oracle.19</driver-ref>
       <auto-commit>false</auto-commit>
       <schema-control>MANUAL</schema-control>
@@ -23,11 +23,12 @@
       </jdbc-additional-properties>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="Sanctuarium MS SQL: Rabbit by Leo" uuid="fc817fbe-373b-4342-8c87-23ca09b8e38e">
+    <data-source source="LOCAL" name="MS-2017 by SA" group="Microsoft" uuid="87ac0a37-8c78-4062-9b40-7312e230d9f2">
       <driver-ref>sqlserver.ms</driver-ref>
       <synchronize>true</synchronize>
+      <remarks>Version 14</remarks>
       <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
-      <jdbc-url>jdbc:sqlserver://sanctuarium\MiniServer:1433;database=Rabbit</jdbc-url>
+      <jdbc-url>jdbc:sqlserver://elephant:25140</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
