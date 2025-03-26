@@ -105,16 +105,17 @@ go
 -- Table with a serial column and foreign keys to tables 11 and 12
 create table Zoo.Basic_13_ForeignKeys
 (
-    Id int identity constraint Basic_13_ForeignKeys_pk primary key,
-    A int,
-    B int,
-    C int,
-    D int,
-    E int,
-    F int,
+    Id   int identity
+        constraint Basic_13_ForeignKeys_pk primary key,
+    A    int,
+    B    int,
+    C    int,
+    D    int,
+    E    int,
+    F    int,
     Note varchar(80),
-    constraint Basic_13_fk_11_a foreign key (A,B) references Zoo.Basic_11_Key,
-    constraint Basic_13_fk_11_b foreign key (C,D) references Zoo.Basic_11_Key (F3,F4),
-    constraint Basic_13_fk_12 foreign key (E,F) references Zoo.Basic_12_C
+    constraint Basic_13_fk_11_a foreign key (A, B) references Zoo.Basic_11_Key,
+    constraint Basic_13_fk_11_b foreign key (C, D) references Zoo.Basic_11_Key (F3, F4),
+    constraint Basic_13_fk_12 foreign key (E, F) references Zoo.Basic_12_C
 )
 go
