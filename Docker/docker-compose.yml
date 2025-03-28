@@ -11,6 +11,11 @@ services:
             -   "25140:1433"
         mem_reservation: 2G
         mem_limit: 4G
+        healthcheck:
+            test: grep "Starting up database 'master'." /var/opt/mssql/log/errorlog || exit 1
+            interval: 10s
+            timeout: 10s
+            retries: 15
 
     ms15:
         container_name: ms15
@@ -23,6 +28,11 @@ services:
             -   "25150:1433"
         mem_reservation: 2G
         mem_limit: 4G
+        healthcheck:
+            test: grep "Starting up database 'master'." /var/opt/mssql/log/errorlog || exit 1
+            interval: 10s
+            timeout: 10s
+            retries: 15
 
     ms16:
         container_name: ms16
@@ -35,3 +45,8 @@ services:
             -   "25160:1433"
         mem_reservation: 2G
         mem_limit: 4G
+        healthcheck:
+            test: grep "Starting up database 'master'." /var/opt/mssql/log/errorlog || exit 1
+            interval: 10s
+            timeout: 10s
+            retries: 15
