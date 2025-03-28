@@ -9,7 +9,7 @@
           <option name="dbmsName" value="ORACLE" />
           <option name="urls">
             <array>
-              <option value="file://$PROJECT_DIR$/Oracle/Zoo-231" />
+              <option value="file://$PROJECT_DIR$/DB/Oracle/Zoo-25/Create" />
             </array>
           </option>
           <option name="group" value="Oracle" />
@@ -21,8 +21,7 @@
           <option name="dbmsName" value="UNKNOWN" />
           <option name="urls">
             <array>
-              <option value="file://$PROJECT_DIR$/Microsoft/Zoo-251/create-Schema.sql" />
-              <option value="file://$PROJECT_DIR$/Microsoft/Zoo-251/create-Basic-11.sql" />
+              <option value="file://$PROJECT_DIR$/DB/Microsoft/Zoo-25/Create" />
             </array>
           </option>
           <option name="group" value="Microsoft" />
