@@ -1,8 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Grant" type="DatabaseScript">
-    <script-file value="$PROJECT_DIR$/Oracle/Zoo-231/grants.sql" />
-    <script-mode>FILE</script-mode>
-    <data-source id="cda1dddb-c843-4e66-95be-3c9b1d2352dd" namespace="schema/&quot;ZOO_231&quot;" />
-    <method v="2" />
-  </configuration>
-</component>
