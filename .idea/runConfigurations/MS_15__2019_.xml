@@ -1,0 +1,20 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="MS-15 (2019)" type="docker-deploy" factoryName="dockerfile" server-name="Elephant">
+    <deployment type="dockerfile">
+      <settings>
+        <option name="containerName" value="MS-15" />
+        <option name="portBindings">
+          <list>
+            <DockerPortBindingImpl>
+              <option name="containerPort" value="1433" />
+              <option name="hostPort" value="25150" />
+            </DockerPortBindingImpl>
+          </list>
+        </option>
+        <option name="commandLineOptions" value="-m 2G" />
+        <option name="sourceFilePath" value="Docker/Microsoft/Ms-15.dockerfile" />
+      </settings>
+    </deployment>
+    <method v="2" />
+  </configuration>
+</component>

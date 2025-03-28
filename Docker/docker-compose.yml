@@ -1,0 +1,37 @@
+services:
+
+    ms14:
+        container_name: ms14
+        hostname: ms14
+        build:
+            context: Microsoft
+            dockerfile: Ms-14.dockerfile
+        privileged: true
+        ports:
+            -   "25140:1433"
+        mem_reservation: 2G
+        mem_limit: 4G
+
+    ms15:
+        container_name: ms15
+        hostname: ms15
+        build:
+            context: Microsoft
+            dockerfile: Ms-15.dockerfile
+        privileged: true
+        ports:
+            -   "25150:1433"
+        mem_reservation: 2G
+        mem_limit: 4G
+
+    ms16:
+        container_name: ms16
+        hostname: ms16
+        build:
+            context: Microsoft
+            dockerfile: Ms-16.dockerfile
+        privileged: true
+        ports:
+            -   "25160:1433"
+        mem_reservation: 2G
+        mem_limit: 4G

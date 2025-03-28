@@ -12,6 +12,6 @@ MS SQL Server Versions
 | 13      | 2016              |
 | 14      | 2017              |
 | 15      | 2019              |
-| 16      | 2020              |
+| 16      | 2022              |
    
 The information is got from here: https://sqlserverbuilds.blogspot.com

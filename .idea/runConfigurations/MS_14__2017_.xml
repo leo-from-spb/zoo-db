@@ -1,0 +1,20 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="MS-14 (2017)" type="docker-deploy" factoryName="dockerfile" server-name="Elephant">
+    <deployment type="dockerfile">
+      <settings>
+        <option name="containerName" value="MS-14" />
+        <option name="portBindings">
+          <list>
+            <DockerPortBindingImpl>
+              <option name="containerPort" value="1433" />
+              <option name="hostPort" value="25140" />
+            </DockerPortBindingImpl>
+          </list>
+        </option>
+        <option name="commandLineOptions" value="-m 2G" />
+        <option name="sourceFilePath" value="Docker/Microsoft/Ms-14.dockerfile" />
+      </settings>
+    </deployment>
+    <method v="2" />
+  </configuration>
+</component>
