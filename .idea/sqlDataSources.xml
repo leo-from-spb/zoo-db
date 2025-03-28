@@ -18,7 +18,7 @@
         <State>
           <option name="id" value="c9aa4649-e810-4e18-aba2-4423593408cc" />
           <option name="name" value="MS SQL Zoo-251 Scripts" />
-          <option name="dbmsName" value="UNKNOWN" />
+          <option name="dbmsName" value="MSSQL" />
           <option name="urls">
             <array>
               <option value="file://$PROJECT_DIR$/DB/Microsoft/Zoo-25/Create" />
