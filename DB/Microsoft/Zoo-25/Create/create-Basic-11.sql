@@ -1,5 +1,34 @@
+-- Basic table with a sequence and view
+create sequence Zoo.Basic_01_Sequence
+    start with 1
+    increment by 1
+    no cache
+go
+
+create table Zoo.Basic_01_Table
+(
+    Id int primary key default (next value for Zoo.Basic_01_Sequence),
+    Name varchar(26) unique not null,
+    Note varchar(80)
+)
+go
+
+create view Zoo.Basic_01_View
+as
+select *
+from Zoo.Basic_01_Table
+go
+
+begin transaction
+    insert into Zoo.Basic_01_Table (Name, Note)
+        values ('One', 'Just the first row'),
+               ('Two', 'It is the second row')
+commit;
+go
+
+
 -- Table with columns of different numeric types
-create table Zoo.Basic_01_Numeric_Types
+create table Zoo.Basic_02_Numeric_Types
 (
     [bit]         bit      default 0,
     [tinyint]     tinyint  default 42,
@@ -20,7 +49,7 @@ create table Zoo.Basic_01_Numeric_Types
     [float(25)]   float(25)    -- 8 bytes
 )
 -- Table with columns of different text types
-create table Zoo.Basic_02_Text_Types
+create table Zoo.Basic_03_Text_Types
 (
     [char]          char         default 'A',
     [char(8)]       char(8)      default 'XyZ',
@@ -34,7 +63,7 @@ create table Zoo.Basic_02_Text_Types
     [ntext]         ntext
 )
 -- Table with columns of different calendar types
-create table Zoo.Basic_03_Calendar_Types
+create table Zoo.Basic_04_Calendar_Types
 (
     [date]           date          default getdate(),
     [time]           time          default getdate(),
@@ -45,7 +74,7 @@ create table Zoo.Basic_03_Calendar_Types
     [timestamp]      timestamp
 )
 -- Table with columns of other/unsorted types
-create table Zoo.Basic_04_Other_Types
+create table Zoo.Basic_05_Other_Types
 (
     [uniqueidentifier] uniqueidentifier,
     [xml]              xml
@@ -56,16 +85,48 @@ go
 create view Zoo.Basic_09_All_Types
 as
 select *
-from Zoo.Basic_01_Numeric_Types,
-     Zoo.Basic_02_Text_Types,
-     Zoo.Basic_03_Calendar_Types,
-     Zoo.Basic_04_Other_Types
+from Zoo.Basic_02_Numeric_Types,
+     Zoo.Basic_03_Text_Types,
+     Zoo.Basic_04_Calendar_Types,
+     Zoo.Basic_05_Other_Types
 go
 
 
+-- Table with indices
+create table Zoo.Basic_11_Indices
+(
+    F1 int,
+    F2 int,
+    F3 int,
+    F4 int,
+    F5 int,
+    F6 int,
+    F7 int,
+    F8 int,
+    F9 int,
+    index Basic_11_Indices_F1_i (F1) with (fillfactor = 66),
+    index Basic_11_Indices_F2_i (F2 desc),
+    index Basic_11_Indices_F234_i (F2, F3 desc, F4),
+    index Basic_11_Indices_F345_p67_i (F2, F3, F4) include (F5, F6),
+    constraint Basic_11_Indices_pk primary key nonclustered (F1, F2, F3, F4),
+    constraint Basic_11_Indices_ui unique (F9, F8, F7, F6) with fillfactor = 42
+)
+go
+
+-- Table with advanced indices
+create table Zoo.Basic_12_IndicesPlus
+(
+    Id int,
+    F2 float,
+    S3 varchar(26),
+    constraint Basic_12_IndicesPlus_pk primary key (Id) with (optimize_for_sequential_key = ON),
+    index Basic_12_IndicesPlus_F2_i (F2) where F2 >= 0 and F2 <= 100,
+    index Basic_12_IndicesPlus_S2_i (S3) where S3 >= 'A' and S3 <= 'Z@'
+)
+
 
 -- Table with basic primary key and a basic indices
-create table Zoo.Basic_11_Key
+create table Zoo.Basic_21_Key
 (
     C0 char,
     F1 int not null,
@@ -77,14 +138,14 @@ create table Zoo.Basic_11_Key
     F7 int,
     F8 varchar(15),
     X1 varchar(15),
-    constraint Basic_11_Key_pk primary key (F1, F2),
-    constraint Basic_11_Key_ak unique (F3, F4)
+    constraint Basic_21_Key_pk primary key (F1, F2),
+    constraint Basic_21_Key_ak unique (F3, F4)
 )
-create index Basic_11_Key_i1 on Zoo.Basic_11_Key (F5, F6, F7) include (F8)
+create index Basic_21_Key_i1 on Zoo.Basic_21_Key (F5, F6, F7) include (F8)
 go
 
 -- Table with non-primary cluster key and primary non-clustered key
-create table Zoo.Basic_12_C
+create table Zoo.Basic_22_C
 (
     C0 char,
     F1 int not null,
@@ -96,17 +157,17 @@ create table Zoo.Basic_12_C
     F7 int,
     X1 varchar(15)
 )
-create clustered index Basic_12_C_cluster on Zoo.Basic_12_C (F1, F2)
-alter table Zoo.Basic_12_C
-    add constraint Basic_12_C_pk primary key (F3, F4)
-create index Basic_12_C_i1 on Zoo.Basic_12_C (F5, F6, F7)
+create clustered index Basic_22_C_cluster on Zoo.Basic_22_C (F1, F2)
+alter table Zoo.Basic_22_C
+    add constraint Basic_22_C_pk primary key (F3, F4)
+create index Basic_22_C_i1 on Zoo.Basic_22_C (F5, F6, F7)
 go
 
 -- Table with a serial column and foreign keys to tables 11 and 12
-create table Zoo.Basic_13_ForeignKeys
+create table Zoo.Basic_23_ForeignKeys
 (
     Id   int identity
-        constraint Basic_13_ForeignKeys_pk primary key,
+        constraint Basic_23_ForeignKeys_pk primary key,
     A    int,
     B    int,
     C    int,
@@ -114,8 +175,48 @@ create table Zoo.Basic_13_ForeignKeys
     E    int,
     F    int,
     Note varchar(80),
-    constraint Basic_13_fk_11_a foreign key (A, B) references Zoo.Basic_11_Key,
-    constraint Basic_13_fk_11_b foreign key (C, D) references Zoo.Basic_11_Key (F3, F4),
-    constraint Basic_13_fk_12 foreign key (E, F) references Zoo.Basic_12_C
+    constraint Basic_23_fk_11_a foreign key (A, B) references Zoo.Basic_21_Key,
+    constraint Basic_23_fk_11_b foreign key (C, D) references Zoo.Basic_21_Key (F3, F4),
+    constraint Basic_23_fk_12 foreign key (E, F) references Zoo.Basic_22_C
 )
+go
+
+
+-- Custom types
+create type Zoo.Basic_41_ISO_2 from char(2)
+create type Zoo.Basic_41_ISO_3 from char(3)
+go
+
+create type Zoo.Basic_42_PersonName as table
+(
+    First varchar(26),
+    Last varchar(26)
+)
+go
+
+create type Zoo.Basic_42_Compound as table
+(
+    Nr tinyint,
+    Code Zoo.Basic_41_ISO_2
+)
+go
+
+create table Zoo.Basic_43_TableWithCustomTypes
+(
+    F1 int,
+    F2 Zoo.Basic_41_ISO_2 not null,
+    F3 Zoo.Basic_41_ISO_3
+)
+go
+
+create view Zoo.Basic_43_ViewWithCustomTypes
+as
+select T.*
+from Zoo.Basic_43_TableWithCustomTypes T
+go
+
+
+
+create synonym Zoo.Basic_Synonym_1_for_Table for Zoo.Basic_01_Table
+create synonym Zoo.Basic_Synonym_2_for_View for Zoo.Basic_01_View
 go
