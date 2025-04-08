@@ -1,4 +1,4 @@
--- Basic table with a sequence and view
+-- The basic stuff
 create sequence Zoo.Basic_01_Sequence
     start with 1
     increment by 1
@@ -13,10 +13,22 @@ create table Zoo.Basic_01_Table
 )
 go
 
+create function Zoo.Basic_01_FormatName(@Id int, @Name varchar(26))
+    returns varchar(50)
+as
+begin
+    return concat(@Name, ' [', cast(@Id as varchar(10)), ']');
+end;
+go
+
 create view Zoo.Basic_01_View
 as
-select *
-from Zoo.Basic_01_Table
+select Id,
+       Name,
+       Zoo.Basic_01_FormatName(Id, Name) as Name_with_Id,
+       Note,
+       len(Note) as Note_Length
+from Zoo.Basic_01_Table T
 go
 
 begin transaction
@@ -25,6 +37,26 @@ begin transaction
                ('Two', 'It is the second row')
 commit;
 go
+
+create procedure Zoo.Basic_01_Up @Name varchar(26),
+                                 @Note varchar(80),
+                                 @NewId int output
+as
+begin
+    insert into Zoo.Basic_01_Table (Name, Note)
+    values (@Name, @Note);
+    select @NewId = scope_identity();
+end;
+go
+
+begin transaction
+    declare @id int;
+    exec Zoo.Basic_01_Up @Name = 'Three', @Note = 'One more record', @NewId = @id out;
+    print @id;
+commit
+go
+
+
 
 
 -- Table with columns of different numeric types
