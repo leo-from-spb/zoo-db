@@ -23,12 +23,28 @@
       </jdbc-additional-properties>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="MS-2017 by SA" group="Microsoft" uuid="87ac0a37-8c78-4062-9b40-7312e230d9f2">
+    <data-source source="LOCAL" name="MS-14 by SA" group="Microsoft" uuid="87ac0a37-8c78-4062-9b40-7312e230d9f2">
       <driver-ref>sqlserver.ms</driver-ref>
       <synchronize>true</synchronize>
       <remarks>Version 14</remarks>
       <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
       <jdbc-url>jdbc:sqlserver://elephant:25140</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="MS-15: Zoo by Curator" group="Microsoft" uuid="74c99d68-15af-4dd3-8de9-03ac9be45f85">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <remarks>Version 15</remarks>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://elephant:25150;database=Menagerie</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="MS-15 by SA" group="Microsoft" uuid="7b34f370-1283-44ae-bf6d-119f885a86b8">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <remarks>Version 15</remarks>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://elephant:25150</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
