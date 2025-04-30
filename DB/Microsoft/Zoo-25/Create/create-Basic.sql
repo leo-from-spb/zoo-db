@@ -248,6 +248,59 @@ from Zoo.Basic_43_TableWithCustomTypes T
 go
 
 
+create table Zoo.Basic_51_TableWithTriggers
+(
+    Id int not null primary key,
+    Name varchar(26),
+    Note varchar(100),
+    Version int default 0
+)
+go
+
+create trigger Zoo.Basic_51_TableWithTriggers_1
+    on Zoo.Basic_51_TableWithTriggers
+    after insert
+    not for replication
+as
+begin
+    update Basic_51_TableWithTriggers
+    set Version = 1
+    where Id in (select Id from inserted)
+end
+go
+
+create trigger Zoo.Basic_51_TableWithTriggers_2
+    on Zoo.Basic_51_TableWithTriggers
+    after update
+    not for replication
+as
+begin
+    update Basic_51_TableWithTriggers
+    set Version = Version + 1
+    where Id in (select Id from inserted)
+end
+go
+
+create trigger Zoo.Basic_51_TableWithTriggers_3
+    on Zoo.Basic_51_TableWithTriggers
+    after delete
+    not for replication
+as
+begin
+    select 42
+end
+go
+
+create trigger Zoo.Basic_51_TableWithTriggers_4_IUD
+    on Zoo.Basic_51_TableWithTriggers
+    after insert, update, delete
+    not for replication
+as
+begin
+    select 74
+end
+go
+
 
 create synonym Zoo.Basic_Synonym_1_for_Table for Zoo.Basic_01_Table
 create synonym Zoo.Basic_Synonym_2_for_View for Zoo.Basic_01_View
