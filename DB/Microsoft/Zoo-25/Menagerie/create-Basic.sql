@@ -1,3 +1,6 @@
+use Menagerie
+go
+
 -- The basic stuff
 create sequence Zoo.Basic_01_Sequence
     start with 1
