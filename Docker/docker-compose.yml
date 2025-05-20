@@ -21,9 +21,11 @@ services:
         container_name: ms15
         hostname: ms15
         build:
-            context: Microsoft
+            context: ./Microsoft
             dockerfile: Ms-15.dockerfile
         privileged: true
+        volumes:
+            - "../DB/Microsoft/Zoo-25/Create:/tmp/scripts"
         ports:
             -   "25150:1433"
         mem_reservation: 2G
