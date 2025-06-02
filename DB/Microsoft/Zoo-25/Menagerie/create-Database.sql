@@ -31,6 +31,10 @@ exec sp_addrolemember 'db_datareader', 'Curator'
 exec sp_addrolemember 'db_datawriter', 'Curator'
 go
 
+exec sp_addextendedproperty @name='Caption', @value=N'Zoopark'
+exec sp_addextendedproperty @name='Note', @value=N'A lot of different objects'
+go
+
 create schema Zoo authorization Curator
 go
 
