@@ -33,6 +33,7 @@ go
 
 exec sp_addextendedproperty @name='Caption', @value=N'Zoopark'
 exec sp_addextendedproperty @name='Note', @value=N'A lot of different objects'
+exec sp_addextendedproperty @name=N'MS_Description', @value=N'DataGrip Static Tests Database'
 go
 
 create schema Zoo authorization Curator
