@@ -5,3 +5,5 @@
 :r create-Basic.sql
 
 :r create-Temporal
+
+:r create-Partitions
