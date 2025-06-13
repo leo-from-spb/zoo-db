@@ -1,0 +1,25 @@
+# Non-applicable folders and files
+.DS_Store
+tmp
+
+# Logs
+*.log
+
+# Idea
+.idea/workspace.xml
+
+# Other binaries and packages
+*.so
+*.exe
+*.7z
+*.dmg
+*.tar
+*.gz
+*.iso
+*.rar
+*.zip
+
+# Backup files
+*.bak
+*.k
+
