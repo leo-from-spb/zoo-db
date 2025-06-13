@@ -1,4 +1,4 @@
--- create the Menagerie database in MS SQL Server version 14
+-- create the Menagerie database in MS SQL Server version 11
 
 :r create-Database.sql
 

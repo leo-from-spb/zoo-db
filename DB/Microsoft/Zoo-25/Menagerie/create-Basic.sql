@@ -1,6 +1,7 @@
 use Menagerie
 go
 
+
 -- The basic stuff
 create sequence Zoo.Basic_01_Sequence
     start with 1
@@ -58,7 +59,6 @@ begin transaction
     print @id;
 commit
 go
-
 
 
 
@@ -142,22 +142,10 @@ create table Zoo.Basic_11_Indices
     index Basic_11_Indices_F1_i (F1) with (fillfactor = 66),
     index Basic_11_Indices_F2_i (F2 desc),
     index Basic_11_Indices_F234_i (F2, F3 desc, F4),
-    index Basic_11_Indices_F345_p67_i (F2, F3, F4) include (F5, F6),
     constraint Basic_11_Indices_pk primary key nonclustered (F1, F2, F3, F4),
     constraint Basic_11_Indices_ui unique (F9, F8, F7, F6) with fillfactor = 42
 )
 go
-
--- Table with advanced indices
-create table Zoo.Basic_12_IndicesPlus
-(
-    Id int,
-    F2 float,
-    S3 varchar(26),
-    constraint Basic_12_IndicesPlus_pk primary key (Id) with (optimize_for_sequential_key = ON),
-    index Basic_12_IndicesPlus_F2_i (F2) where F2 >= 0 and F2 <= 100,
-    index Basic_12_IndicesPlus_S2_i (S3) where S3 >= 'A' and S3 <= 'Z@'
-)
 
 
 -- Table with basic primary key and a basic indices
